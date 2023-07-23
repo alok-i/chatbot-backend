@@ -4,14 +4,11 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+const DB = process.env.DATABASE;
 
 mongoose
   .connect(
-    'mongodb+srv://alokTg:8PVya2D4klF16eag@chatbotcluster.na0futp.mongodb.net/?retryWrites=true&w=majority',
+     DB,
     {
       useNewUrlParser: true,
       useCreateIndex: true,

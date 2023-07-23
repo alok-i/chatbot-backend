@@ -7,26 +7,20 @@ const chatSchema = new mongoose.Schema({
   userId : {
     type: String,
   },
-  role : {
+  conversationId: {
+    type: String,
+  },
+  Role : {
     type: String
   },
-  timestamp: {
-    type: Date,
-    default: Date.now,
-  },
-  messages: {
-    type: [
-      {
-        message: String,
-        // Additional properties for message, if needed
-      },
-    ],
-    default: [],
-  },
+  messages: [{
+     message: {type: String},
+     role : {type: String},
+  }],
 });
 
-chatSchema.methods.addMessage = function (message) {
-  this.messages.push({ message });
+chatSchema.methods.addMessage = function ({message, role}) {
+  this.messages.push({ message, role });
 };
 
 const Chat = mongoose.model('Chat', chatSchema);
