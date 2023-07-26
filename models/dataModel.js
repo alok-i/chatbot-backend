@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 const chatSchema = new mongoose.Schema({
   userId : {
-    type: String,
+    type: Number,
   },
   conversationId: {
     type: String,

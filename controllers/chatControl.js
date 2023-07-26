@@ -5,7 +5,7 @@ const Chat = require("../models/dataModel");
 
 
 exports.addMessage = (req, res, next) => {
-    const { conversationId, message, role, userID } = req.body;
+    const { conversationId, message, Role, userId } = req.body;
     console.log(message);
     console.log(typeof(message));
     // let messages = JSON.parse(message);
@@ -17,7 +17,7 @@ exports.addMessage = (req, res, next) => {
       .then((chat) => {
         if (!chat) {
           // Chat document not found, handle the case as needed
-          chat = new Chat({ conversationId , messages : [], role, userID })
+          chat = new Chat({ conversationId , messages : [], Role, userId })
         }
   
         // Add the new message
