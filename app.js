@@ -4,11 +4,16 @@ const cors = require('cors');
 
 const app = express();
 
-const corsOptions = {
-  origin: ['http://localhost:3001', 'https://canvas.talentgum.com/', 'https://it-canvas.talentgum.com'],
-};
+// const corsOptions = {
+//   origin: ['http://localhost:3001', 'https://canvas.talentgum.com/', 'https://it-canvas.talentgum.com'],
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+})
 
 
 const chatRoute = require('./routes/chatRoute');
